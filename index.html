@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎使用专属浏览器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('https://i.ibb.co/N2Mk5zd9/IMG-20260119-091826.jpg'); /* 替换你的背景图链接 */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Microsoft YaHei', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+        }
+        
+        /* 顶部固定透明标题 */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 20px 15px;
+            z-index: 1000;
+            background-color: transparent; 
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* 核心修改：使搜索框在屏幕中央 */
+        .center-container {
+            width: 100%;
+            height: 100vh; /* 占满整个视口高度 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 垂直居中 */
+            align-items: center; /* 水平居中 */
+        }
+        
+        /* 搜索框样式 */
+        #searchForm {
+            width: 90%;
+            max-width: 700px;
+            margin-top: -40px; /* 可微调垂直位置，正值下移，负值上移 */
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 20px 25px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 106, 0, 0.8);
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        #searchInput:focus {
+            border-color: #ff6a00;
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.2), 0 6px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        #searchInput::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .top-header {
+                font-size: 1.3rem;
+                padding: 18px 15px;
+            }
+            
+            #searchForm {
+                width: 95%;
+            }
+            
+            #searchInput {
+                padding: 18px 22px;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部固定透明标题 -->
+    <header class="top-header">
+        
+    </header>
+    
+    <!-- 核心修改：居中容器 -->
+    <div class="center-container">
+        <!-- 个性签名已删除 -->
+        
+        <!-- 透明搜索框 -->
+        <form id="searchForm" action="https://www.baidu.com/s" method="get" target="_blank">
+            <input type="text" 
+                   id="searchInput" 
+                   name="wd" 
+                   placeholder="我是长离，今州令尹参事。" 
+                   autofocus 
+                   aria-label="搜索输入框" />
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                if (this.value.trim() !== '') {
+                    document.getElementById('searchForm').submit();
+                } else {
+                    this.focus();
+                }
+            }
+        });
+        
+        window.addEventListener('load', function() {
+            document.getElementById('searchInput').focus();
+        });
+    </script>
+</body>
+</html>
